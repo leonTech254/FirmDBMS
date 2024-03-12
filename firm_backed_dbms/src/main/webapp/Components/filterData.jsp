@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/alldata.css">
     <style>
         .search_container {
             background-color: #141d2b;
@@ -58,6 +60,7 @@
     </style>
 </head>
 <body>
+
 <div class="search_container">
     <form id="searchForm" onsubmit="submitForm(); return false;">
         <input type="search" name="query" id="searchQuery" placeholder="Search by title or author"/>
@@ -65,7 +68,7 @@
     </form>
 </div>
 
-<table border="1" id="booksTable">
+<table border="1" id="booksTable" class="table table-bordered table-sm">
     <thead>
     <tr>
         <th>ID</th>
@@ -93,7 +96,7 @@
             <form action="BookServlet" method="post">
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="id" value="<%= book.getId() %>">
-                <input type="submit" value="Delete">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
             </form>
         </td>
     </tr>
