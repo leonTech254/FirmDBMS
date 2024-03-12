@@ -43,6 +43,57 @@ public class FilmDAO {
         }
     }
 
+    public void addFilm(Film film) {
+        openConnection();
+        try {
+            String insertSQL = "INSERT INTO films (title, year, director, stars, review) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(insertSQL);
+            preparedStatement.setString(1, film.getTitle());
+            preparedStatement.setInt(2, film.getYear());
+            preparedStatement.setString(3, film.getDirector());
+            preparedStatement.setString(4, film.getStars());
+            preparedStatement.setString(5, film.getReview());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException se) {
+            System.out.println(se);
+        }
+        closeConnection();
+    }
+
+    public void updateFilm(Film film) {
+        openConnection();
+        try {
+            String updateSQL = "UPDATE films SET title=?, year=?, director=?, stars=?, review=? WHERE id=?";
+            PreparedStatement preparedStatement = conn.prepareStatement(updateSQL);
+            preparedStatement.setString(1, film.getTitle());
+            preparedStatement.setInt(2, film.getYear());
+            preparedStatement.setString(3, film.getDirector());
+            preparedStatement.setString(4, film.getStars());
+            preparedStatement.setString(5, film.getReview());
+            preparedStatement.setInt(6, film.getId());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException se) {
+            System.out.println(se);
+        }
+        closeConnection();
+    }
+
+    public void deleteFilm(int id) {
+        openConnection();
+        try {
+            String deleteSQL = "DELETE FROM films WHERE id=?";
+            PreparedStatement preparedStatement = conn.prepareStatement(deleteSQL);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException se) {
+            System.out.println(se);
+        }
+        closeConnection();
+    }
+
     private Film getNextFilm(ResultSet rs){
         Film thisFilm=null;
         try {
@@ -103,8 +154,5 @@ public class FilmDAO {
 
         return oneFilm;
     }
-
-
-
 
 }

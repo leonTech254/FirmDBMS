@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
     *{
@@ -91,7 +92,7 @@
         <h2 class="p-3 bg-primary text-light">CRUD OPERATION[Firms]</h2>
     </div>
     <div class="nav_links_container">
-        <button onclick="getTo('http://localhost:8080/BookServlet')">GET All Data</button>
+        <button onclick="getTo('http://localhost:8080/firms')">GET All Data</button>
         <button onclick="getTo('http://localhost:8080/BookServlet?action=filter')">Search data</button>
         <%--        <button>Update Data</button>--%>
         <button onclick="getTo('http://localhost:8080/BookServlet?action=new')"> Add Data</button>
