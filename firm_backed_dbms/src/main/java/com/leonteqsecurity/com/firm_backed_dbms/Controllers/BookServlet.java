@@ -22,6 +22,9 @@ public class BookServlet extends HttpServlet {
     public void init() {
         bookDAO = new BookDAO();
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -43,7 +46,6 @@ public class BookServlet extends HttpServlet {
             case "filter":
                 searchBookByNameOrAuthor(request, response);
                 break;
-
             default:
                 listBooks(request, response);
                 break;
@@ -63,18 +65,19 @@ public class BookServlet extends HttpServlet {
     }
 
     private void insertBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Extract book details from request parameters
         String title = request.getParameter("title");
         String author = request.getParameter("author");
-        // Extract other book details similarly
+        String date = request.getParameter("date");
+        String genres = request.getParameter("genres");
+        String characters = request.getParameter("characters");
+        String synopsis = request.getParameter("synopsis");
 
         // Create a new Book object
-        Book newBook = new Book(0, title, author, null, null, null, null);
+        Book newBook = new Book(0, title, author, date, genres, characters, synopsis);
 
-        // Insert the new book into the database
+
         bookDAO.insertBook(newBook);
 
-        // Redirect to the book list page
         response.sendRedirect("BookServlet");
     }
 

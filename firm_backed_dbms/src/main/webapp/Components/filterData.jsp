@@ -75,13 +75,12 @@
         <th>Genres</th>
         <th>Characters</th>
         <th>Synopsis</th>
+        <th>Action</th> <!-- New column for delete button -->
     </tr>
     </thead>
     <tbody>
-    <%
-        ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
-        for (Book book : books) {
-    %>
+    <% ArrayList<Book> books = (ArrayList<Book>) request.getAttribute("books");
+        for (Book book : books) { %>
     <tr>
         <td><%= book.getId() %></td>
         <td><%= book.getTitle() %></td>
@@ -90,6 +89,13 @@
         <td><%= book.getGenres() %></td>
         <td><%= book.getCharacters() %></td>
         <td><%= book.getSynopsis() %></td>
+        <td>
+            <form action="BookServlet" method="post">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="id" value="<%= book.getId() %>">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
     <% } %>
     </tbody>
