@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 @WebServlet("/BookServlet")
 public class BookServlet extends HttpServlet {
@@ -37,9 +40,14 @@ public class BookServlet extends HttpServlet {
             case "delete":
                 deleteBook(request, response);
                 break;
+            case "filter":
+                searchBookByNameOrAuthor(request, response);
+                break;
+
             default:
                 listBooks(request, response);
                 break;
+
         }
     }
 
@@ -80,4 +88,12 @@ public class BookServlet extends HttpServlet {
         // Redirect to the book list page
         response.sendRedirect("BookServlet");
     }
+
+    public void searchBookByNameOrAuthor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<Book> allBooks = bookDAO.getAllBooks();
+        request.setAttribute("books", allBooks);
+        request.getRequestDispatcher("SearchBooks.jsp").forward(request, response);
+    }
+
+
 }
