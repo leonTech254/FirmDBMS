@@ -31,10 +31,50 @@ public class FirmServlet extends HttpServlet {
                 break;
             case "new":
                 displayNewForm(request,response);
+                break;
             case "insert":
                 insertData(request,response);
+                break;
+            case "delete":
+                DeleteData(request,response);
+                break;
+            case "update":
+                UpdateData(request,response);
+                break;
+            default:
+                getAllFirms(request, response);
+                break;
         }
     }
+
+    private void UpdateData(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        int id=Integer.parseInt(request.getParameter("id"));
+        String title = request.getParameter("title");
+        int year = Integer.parseInt(request.getParameter("year"));
+        String director = request.getParameter("director");
+        String stars = request.getParameter("stars");
+        String review = request.getParameter("review");
+
+
+        Film updatedFirm = new Film();
+        updatedFirm.setTitle(title);
+        updatedFirm.setYear(year);
+        updatedFirm.setDirector(director);
+        updatedFirm.setStars(stars);
+        updatedFirm.setReview(review);
+
+        firmDAO.updateFilm(updatedFirm);
+        response.sendRedirect("firms?action=new");
+
+    }
+
+    private void DeleteData(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id=Integer.parseInt(request.getParameter("id"));
+        firmDAO.deleteFilm(id);
+        response.sendRedirect("firms");
+    }
+
+
 
     private void insertData(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String title = request.getParameter("title");

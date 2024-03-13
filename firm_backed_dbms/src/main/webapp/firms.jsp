@@ -4,18 +4,16 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .page_container
-        {
+        .page_container {
             display: flex;
         }
-        .display_container
-        {
+        .display_container {
             width: 100%;
             overflow: auto;
         }
-        .film-container
-        {
+        .film-container {
             display: grid;
             grid-template-columns: repeat(4,1fr);
             gap: .1rem;
@@ -38,6 +36,42 @@
             font-size: 14px;
             margin-bottom: 10px;
         }
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        /* Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -46,21 +80,86 @@
         <%@ include file="Components/sidebarNav.jsp"%>
     </div>
     <div class="display_container">
-<div class="film-container">
-    <% List<Film> filmList = (List<Film>) request.getAttribute("films"); %>
-    <% for (Film film : filmList) { %>
-    <div class="film-card">
-        <div class="film-title"><%= film.getTitle() %></div>
-        <div class="film-details">
-            <strong>Year:</strong> <%= film.getYear() %><br>
-            <strong>Director:</strong> <%= film.getDirector() %><br>
-            <strong>Stars:</strong> <%= film.getStars() %><br>
-            <strong>Review:</strong> <%= film.getReview() %>
+
+        <!-- Modal -->
+        <div id="updateModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Update Film</h2>
+                <!-- Update Form -->
+                <form id="updateForm" action="firms" method="post">
+                    <input type="hidden" id="updateId" name="id">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required><br>
+                    <label for="year">Year:</label>
+                    <input type="text" id="year" name="year" required><br>
+                    <label for="director">Director:</label>
+                    <input type="text" id="director" name="director" required><br>
+                    <label for="stars">Stars:</label>
+                    <input type="text" id="stars" name="stars" required><br>
+                    <label for="review">Review:</label>
+                    <textarea id="review" name="review" required></textarea><br>
+                    <input type="submit" value="Update">
+                </form>
+
+            </div>
         </div>
-    </div>
-    <% } %>
-</div>
+
+        <div class="film-container">
+            <% List<Film> filmList = (List<Film>) request.getAttribute("films"); %>
+            <% for (Film film : filmList) { %>
+            <div class="film-card">
+                <div class="film-title"><%= film.getTitle() %></div>
+                <div class="film-details">
+                    <strong>Year:</strong> <%= film.getYear() %><br>
+                    <strong>Director:</strong> <%= film.getDirector() %><br>
+                    <strong>Stars:</strong> <%= film.getStars() %><br>
+                    <strong>Review:</strong> <%= film.getReview() %>
+                </div>
+                <div class="form-container">
+                    <button type="button" class="update-button btn btn-primary" data-id="<%= film.getId() %>">Update</button>
+
+                    <form action="firms?action=delete" method="post">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id" value="<%= film.getId() %>">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </div>
+            </div>
+            <% } %>
+        </div>
     </div>
 </div>
 </body>
+<script>
+    // Get the modal
+    var modal = document.getElementById("updateModal");
+
+    // Get the button that opens the modal
+    var buttons = document.querySelectorAll(".update-button");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    buttons.forEach(function(button) {
+        button.onclick = function() {
+            var filmId = this.getAttribute("data-id");
+
+            document.getElementById("updateId").value = filmId;
+            modal.style.display = "block";
+        }
+    });
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </html>
