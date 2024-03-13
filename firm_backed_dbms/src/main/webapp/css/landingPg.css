@@ -1,0 +1,60 @@
+.page_container
+{
+    display: flex;
+}
+.display_container
+{
+    width: 100%;
+    overflow: auto;
+}
+.background {
+    background: linear-gradient(to left, rgba(24, 27, 27, 0.322) 0%, rgba(0, 0, 0, 0.808) 90%), url('../images/img.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.background h2{
+    font-weight: bold;
+    color: #fff;
+    font-size: 4rem;
+}
+.background p{
+    font-size: 3.5rem;
+
+}
+.red {
+    color: #ff0000;
+}
+
+.green {
+    color: #00ff00;
+}
+
+.blue {
+    color: #0000ff;
+}
+
+.yellow {
+    color: #ffff00;
+}
+
+.cyan {
+    color: #00ffff;
+}
+
+.purple {
+    color: #ff00ff;
+}
+
+.orange {
+    color: #ff8000;
+}

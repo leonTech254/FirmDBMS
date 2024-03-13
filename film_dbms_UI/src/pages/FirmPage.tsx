@@ -3,6 +3,7 @@ import NavBarITem from '../Models/NavBarITem';
 import "../Assets/css/dashboard.css";
 import AllFilms from '../Components/AllFirlms';
 import AddFirm from '../Components/AddFirm';
+import ManageFirmLandingPage from '../Components/ManageFirmLandingPage';
 
 const navItems: NavBarITem[] = [
   {
@@ -28,7 +29,8 @@ const navItems: NavBarITem[] = [
 ];
 
 const FirmPage: React.FC = () => {
-  const [componentName, setComponentName] = useState<string>("delete");
+  const [componentName, setComponentName] = useState<string>("default");
+  
 
   function toggleMenu(): void {
     const user_document = document.getElementById("side_bar");
@@ -64,7 +66,9 @@ const FirmPage: React.FC = () => {
         <div className="components">
           <div className="components">
             {componentName === "local_library" && <AllFilms />}   
-            {componentName === "create" && <AddFirm />}
+            {componentName === "create" && <AddFirm />}        
+            {componentName === "default" && <ManageFirmLandingPage />}
+            
             
           </div>
         </div>

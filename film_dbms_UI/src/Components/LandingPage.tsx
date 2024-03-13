@@ -1,6 +1,7 @@
 import React from 'react';
 import "../Assets/css/landingpage.css"
 import bsImage from "../Assets/images/business.svg"
+import { Link } from 'react-router-dom';
 
 const LandingPage: React.FC = () => {
   return (
@@ -12,15 +13,15 @@ const LandingPage: React.FC = () => {
             <header>
               <div className="container">
                 <div className="logo">
-                  <h3>CBS</h3>
+                  <h3>CRUD OPERATION</h3>
                 </div>
 
                 <div className="links">
                   <ul>
                     <li>
-                      <a href="{{url_for('signUp')}}" className="btn">
-                        Sign up
-                      </a>
+                        <Link to="/firm" className='btn'>
+                        Get started
+                        </Link>
                     </li>
                   </ul>
                 </div>
@@ -37,11 +38,11 @@ const LandingPage: React.FC = () => {
               <div className="container">
                 <div className="left">
                   <div className="big-title">
-                    <h1>Future is here,</h1>
-                    <h1>Start Exploring now.</h1>
+                    <h1>Future is here Implementing </h1>
+                    <h1>All HTTP Requests</h1>
                   </div>
                   <p className="text">
-                    Sign up now to enjoy our Contact Management System Today
+                    Your Essential Resource for CRUD Operations with HTTP Methods
                   </p>
                   <div className="cta"></div>
                 </div>
