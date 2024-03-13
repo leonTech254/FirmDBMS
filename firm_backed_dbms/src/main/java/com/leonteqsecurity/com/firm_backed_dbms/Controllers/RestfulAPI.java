@@ -19,7 +19,24 @@ public class RestfulAPI extends HttpServlet {
     private FilmDAO filmDAO = new FilmDAO();
     private Gson gson = new Gson();
 
+    // Add CORS headers to the response
+    private void addCorsHeaders(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE,OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        response.setHeader("Access-Control-Max-Age", "3600");
+    }
+    protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Add CORS headers to the response
+        addCorsHeaders(response);
+        response.setStatus(HttpServletResponse.SC_OK);
+    }
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Add CORS headers to the response
+        addCorsHeaders(response);
+
         List<Film> filmList = filmDAO.getAllFilms();
         String json = gson.toJson(filmList);
         response.setContentType("application/json");
@@ -29,6 +46,9 @@ public class RestfulAPI extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Add CORS headers to the response
+        addCorsHeaders(response);
+
         BufferedReader reader = request.getReader();
         Film newFilm = gson.fromJson(reader, Film.class);
         filmDAO.addFilm(newFilm);
@@ -36,6 +56,9 @@ public class RestfulAPI extends HttpServlet {
     }
 
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Add CORS headers to the response
+        addCorsHeaders(response);
+
         BufferedReader reader = request.getReader();
         Film updatedFilm = gson.fromJson(reader, Film.class);
         filmDAO.updateFilm(updatedFilm);
@@ -43,6 +66,9 @@ public class RestfulAPI extends HttpServlet {
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Add CORS headers to the response
+        addCorsHeaders(response);
+
         String idString = request.getParameter("id");
         if (idString != null) {
             int id = Integer.parseInt(idString);

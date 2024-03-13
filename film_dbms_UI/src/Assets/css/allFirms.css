@@ -1,0 +1,41 @@
+.film-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.film-table th, .film-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.film-table th {
+    background-color: #f2f2f2;
+}
+
+.film-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.film-table tr:hover {
+    background-color: #ddd;
+}
+
+.film-table button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+.film-table button:hover {
+    background-color: #45a049;
+}

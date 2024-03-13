@@ -1,7 +1,7 @@
 import Firm from "../Models/Film";
 
 export default class FirmService {
-    baseURL: string = "http://localhost:8080/api/firm/";
+    baseURL: string = "http://localhost:8080/film_dbms/api/films";
 
     constructor() {}
 
@@ -61,7 +61,7 @@ export default class FirmService {
 
     async deleteFirm(id: number): Promise<boolean> {
         try {
-            const response = await fetch(this.baseURL + id, {
+            const response = await fetch(`${this.baseURL}?id=${id}`, {
                 method: 'DELETE'
             });
             if (!response.ok) {
@@ -73,4 +73,5 @@ export default class FirmService {
             return false;
         }
     }
+    
 }
