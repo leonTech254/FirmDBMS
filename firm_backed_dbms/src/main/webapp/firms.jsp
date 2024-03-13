@@ -72,6 +72,41 @@
             text-decoration: none;
             cursor: pointer;
         }
+        #updateForm   form {
+            background-color: #fff;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #updateForm   label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        #updateForm  input[type="text"],
+        #updateForm  input[type="date"],
+        #updateForm   textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #updateForm  input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .updateModal input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -83,7 +118,7 @@
 
         <!-- Modal -->
         <div id="updateModal" class="modal">
-            <div class="modal-content">
+            <div class="modal-content"  style="width: 50%;margin: auto;">
                 <span class="close">&times;</span>
                 <h2>Update Film</h2>
                 <!-- Update Form -->
