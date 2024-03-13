@@ -25,7 +25,6 @@ const FirmForm: React.FC<Props> = ({ firm, onClose }) => {
 
     return (
         <div className="pop_wrapper_container">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ea quod tempora ipsam perferendis tempore necessitatibus totam placeat! Similique officiis qui ab voluptatem vero reprehenderit excepturi, velit modi quisquam voluptatum.
         <div className="firm-form-container">
             <div className="firm-form-popup"> {/* Use a wrapper div for floating and pop-up effect */}
                 <h2>Update Firm</h2>

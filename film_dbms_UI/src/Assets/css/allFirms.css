@@ -35,7 +35,12 @@
     border-radius: 4px;
     transition-duration: 0.4s;
 }
+.film-table button:first-child
+{
+    background-color: red;
+}
 
 .film-table button:hover {
-    background-color: #45a049;
+    background-color: #0f1e1f;
+    color: #fff;
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavBarITem from '../Models/NavBarITem';
 import "../Assets/css/dashboard.css";
 import AllFilms from '../Components/AllFirlms';
+import AddFirm from '../Components/AddFirm';
 
 const navItems: NavBarITem[] = [
   {
@@ -62,7 +63,9 @@ const FirmPage: React.FC = () => {
         </div>
         <div className="components">
           <div className="components">
-            {componentName === "delete" && <AllFilms />}
+            {componentName === "local_library" && <AllFilms />}   
+            {componentName === "create" && <AddFirm />}
+            
           </div>
         </div>
       </div>
