@@ -40,8 +40,9 @@ export default class FirmService {
     }
 
     async updateFirm(updatedFirm: Firm): Promise<Firm | null> {
+        console.log(updatedFirm);
         try {
-            const response = await fetch(this.baseURL + updatedFirm.id, {
+            const response = await fetch(this.baseURL , {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

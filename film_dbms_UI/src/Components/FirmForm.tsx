@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Firm from '../Models/Film';
 import '../Assets/css/popform.css'; 
+import FirmService from '../Services/FirmApiService';
 
 interface Props {
     firm: Firm;
     onClose: () => void;
 }
+ 
 
 const FirmForm: React.FC<Props> = ({ firm, onClose }) => {
     const [title, setTitle] = useState(firm.title);
@@ -16,9 +18,9 @@ const FirmForm: React.FC<Props> = ({ firm, onClose }) => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        // Handle form submission, e.g., update the film
-        // You can call an API service here to update the film
-        onClose(); // Close the form after submission
+        const updatedFirm: Firm = { ...firm, title, year, director, stars, review };
+        const firmService = new FirmService();
+        firmService.updateFirm(updatedFirm);
     };
 
     return (
