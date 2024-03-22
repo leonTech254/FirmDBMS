@@ -20,7 +20,9 @@ public class BookDAO {
     // Note none default port used, 6306 not 3306
     String url = "jdbc:mysql://localhost:3306/FirmDB";
 
-    public BookDAO() {}
+    public BookDAO(Connection conn) {
+        this.conn = conn;
+    }
 
 
     private void openConnection(){

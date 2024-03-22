@@ -19,7 +19,7 @@ public class RestfulAPI extends HttpServlet {
     private FilmDAO filmDAO = new FilmDAO();
     private Gson gson = new Gson();
 
-    // Add CORS headers to the response
+    // Adding CORS headers to the response
     private void addCorsHeaders(HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE,OPTIONS");
@@ -27,7 +27,7 @@ public class RestfulAPI extends HttpServlet {
         response.setHeader("Access-Control-Max-Age", "3600");
     }
     protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Add CORS headers to the response
+        // Adding CORS headers to the response
         addCorsHeaders(response);
         response.setStatus(HttpServletResponse.SC_OK);
     }
