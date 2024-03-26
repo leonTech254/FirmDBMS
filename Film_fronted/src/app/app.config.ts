@@ -3,19 +3,17 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpInterceptorService } from './http-interceptor.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
      provideClientHydration(),
-     provideHttpClient(),
     //  add the Inteceptor here
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:HttpInterceptorService,
-      multi:true
-    }
+    provideAnimationsAsync(), provideAnimationsAsync(),
+    provideHttpClient(withFetch(),withInterceptorsFromDi(),),
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
      
     ]
 };

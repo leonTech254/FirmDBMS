@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dash-board',
-  standalone: true,
-  imports: [],
   templateUrl: './dash-board.component.html',
-  styleUrl: './dash-board.component.scss'
+  styleUrls: ['./dash-board.component.scss']
 })
 export class DashBoardComponent {
+  constructor(private router: Router) {}
 
+  goTo(userInfo: string) {
+    this.router.navigate(["/firms-crud-oparations"]);
+  }
 }

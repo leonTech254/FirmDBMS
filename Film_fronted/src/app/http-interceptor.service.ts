@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpInterceptorService implements HttpInterceptor {
-  private BaseURl="";
+  private BaseURl="http://localhost:8080/film_dbms/api/films";
 
   constructor() { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

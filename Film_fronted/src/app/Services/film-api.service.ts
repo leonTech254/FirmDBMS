@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class FilmAPIService {
   constructor(private http: HttpClient) { }
+  firm:Film[]=[];
+ 
 
   getAllFilms(): Observable<Film[]> {
     return this.http.get<Film[]>('/films')
@@ -20,6 +22,36 @@ export class FilmAPIService {
         })
       );
   }
+
+ getDummyData():Film[]{
+  this.firm= [
+    {
+      "id": 1,
+      "title": "Inception",
+      "year": 2010,
+      "director": "Christopher Nolan",
+      "stars": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page",
+      "review": "A mind-bending thriller that explores the concept of dreams within dreams."
+    },
+    {
+      "id": 2,
+      "title": "The Shawshank Redemption",
+      "year": 1994,
+      "director": "Frank Darabont",
+      "stars": "Tim Robbins, Morgan Freeman",
+      "review": "A powerful tale of hope and friendship set in a prison."
+    },
+    {
+      "id": 3,
+      "title": "The Godfather",
+      "year": 1972,
+      "director": "Francis Ford Coppola",
+      "stars": "Marlon Brando, Al Pacino, James Caan",
+      "review": "An epic crime drama that follows the Corleone family."
+    }
+  ]
+  return this.firm;
+ }
 
   addFilm(newFilm: Film): Observable<Film> {
     return this.http.post<Film>('/films', newFilm)

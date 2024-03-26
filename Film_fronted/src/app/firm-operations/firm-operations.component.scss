@@ -1,0 +1,57 @@
+.Cards-container {
+    display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 20px;
+  }
+  
+  .film-card {
+    width: 300px; 
+  }
+  
+  .film-title {
+    font-size: 24px; 
+  }
+  
+  .film-subtitle {
+    font-size: 16px; 
+  }
+  
+  .film-stars,
+  .film-review {
+    font-size: 14px;
+  }
+  
+  .action-button {
+    margin-right: 8px; 
+  }
+  
+  @media screen and (max-width: 600px) {
+  .Cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  }
+}
+.dialog_form_container
+{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.527);
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .formContainer
+    {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      background-color: #ccc;
+      padding: 30px;
+      border-radius: .5rem;
+    }
+    
+    
+}

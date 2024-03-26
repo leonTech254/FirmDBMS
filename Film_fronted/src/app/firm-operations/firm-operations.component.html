@@ -1,0 +1,47 @@
+<div class="Cards-container">
+    <mat-card *ngFor="let film of films" class="film-card">
+      <mat-card-header>
+        <mat-card-title class="film-title">{{ film.title }}</mat-card-title>
+        <mat-card-subtitle class="film-subtitle">{{ film.director }} ({{ film.year }})</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="film-stars">Stars: {{ film.stars }}</p>
+        <p class="film-review">Review: {{ film.review }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="action-button" color="primary">View Details</button>
+        <button mat-raised-button class="action-button" color="warn" (click)="DeleteCard(film)">Delete</button>
+        <button mat-raised-button class="action-button" color="accent" (click)="updateFilm(film)">Update</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="dialog_form_container" *ngIf="isPopUp">
+    <div class="formContainer">
+      <h1>Update Film</h1>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="selectedFilm.title">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Director</mat-label>
+        <input matInput [(ngModel)]="selectedFilm.director">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Year</mat-label>
+        <input matInput [(ngModel)]="selectedFilm.year">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Stars</mat-label>
+        <input matInput [(ngModel)]="selectedFilm.stars">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Review</mat-label>
+        <textarea matInput [(ngModel)]="selectedFilm.review"></textarea>
+      </mat-form-field>
+      <button mat-raised-button class="action-button" color="accent" (click)="updateFilmForm()">Update film</button> <br>
+      <button mat-raised-button class="action-button" color="warn" (click)="close()">close</button>
+    </div>
+      
+  </div>
+  
