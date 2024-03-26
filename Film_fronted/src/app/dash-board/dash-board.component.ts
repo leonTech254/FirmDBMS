@@ -10,6 +10,15 @@ export class DashBoardComponent {
   constructor(private router: Router) {}
 
   goTo(userInfo: string) {
-    this.router.navigate(["/firms-crud-oparations"]);
+    if(userInfo=="film")
+    {
+      this.router.navigate(["/firms-crud-oparations"]);
+    }else
+    {
+      this.router.navigate(["/book-crud-oparations"]);
+      
+    }
+
+    
   }
 }

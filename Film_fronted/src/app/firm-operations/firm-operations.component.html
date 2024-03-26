@@ -1,3 +1,5 @@
+<app-nav-bar></app-nav-bar>
+
 <div class="Cards-container">
     <mat-card *ngFor="let film of films" class="film-card">
       <mat-card-header>
@@ -39,8 +41,10 @@
         <mat-label>Review</mat-label>
         <textarea matInput [(ngModel)]="selectedFilm.review"></textarea>
       </mat-form-field>
-      <button mat-raised-button class="action-button" color="accent" (click)="updateFilmForm()">Update film</button> <br>
+     <div class="btn_con">
+      <button mat-raised-button class="action-button" color="accent" (click)="updateFilmForm()">Update film</button>
       <button mat-raised-button class="action-button" color="warn" (click)="close()">close</button>
+     </div>
     </div>
       
   </div>

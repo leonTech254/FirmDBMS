@@ -21,12 +21,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import Swal from 'sweetalert2';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 
 @Component({
   selector: 'app-firm-operations',
   standalone: true,
-  imports: [MatCardModule,MatButtonModule,CommonModule,MatFormFieldModule, MatInputModule, FormsModule,MatSelectModule],
+  imports: [MatCardModule,MatButtonModule,CommonModule,MatFormFieldModule, MatInputModule, FormsModule,MatSelectModule,NavBarComponent],
   templateUrl: './firm-operations.component.html',
   styleUrl: './firm-operations.component.scss'
 })

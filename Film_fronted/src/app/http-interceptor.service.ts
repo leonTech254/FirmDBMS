@@ -10,7 +10,15 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   constructor() { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const modifiedRequest=req.clone({url:`${this.BaseURl}/${req.url}`})
+    let modifiedRequest;
+    if(!req.url.startsWith("http"))
+    {
+       modifiedRequest=req.clone({url:`${this.BaseURl}/${req.url}`})
+    }else
+    {
+       modifiedRequest=req.clone({url:`${req.url}`})
+    }
+   
 
     return next.handle(modifiedRequest);
   }
